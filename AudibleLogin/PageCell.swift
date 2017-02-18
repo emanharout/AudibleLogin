@@ -16,11 +16,11 @@ class PageCell: UICollectionViewCell {
       imageView.image = UIImage(named: page.imageName)
       
       let attributes = [NSFontAttributeName: UIFont.systemFont(ofSize: 20, weight: UIFontWeightMedium),
-                        NSForegroundColorAttributeName: UIColor.init(white: 0.2, alpha: 1)]
+                        NSForegroundColorAttributeName: UIColor(white: 0.2, alpha: 1)]
       let attributedText = NSMutableAttributedString(string: page.title, attributes: attributes)
       
       let messageTextAttributes = [NSFontAttributeName: UIFont.systemFont(ofSize: 14),
-                               NSForegroundColorAttributeName: UIColor.init(white: 0.2, alpha: 0.2)]
+                               NSForegroundColorAttributeName: UIColor(white: 0.2, alpha: 1)]
       let messageAttributedText = NSMutableAttributedString(string: "\n\n\(page.message)", attributes: messageTextAttributes)
       
       attributedText.append(messageAttributedText)
