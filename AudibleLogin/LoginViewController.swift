@@ -20,6 +20,11 @@ class LoginViewController: UIViewController {
     let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
     cv.delegate = self
     cv.dataSource = self
+    
+    // Setup Pagination
+    cv.isPagingEnabled = true
+    layout.minimumLineSpacing = 0
+    
     return cv
   }()
 
