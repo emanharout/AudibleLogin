@@ -19,6 +19,13 @@ class PageCell: UICollectionViewCell {
     return iv
   }()
   
+  let textView: UITextView = {
+    let tv = UITextView()
+    tv.text = "SAMPLE TEXT FOR NOW"
+    tv.isEditable = false
+    return tv
+  }()
+  
   override init(frame: CGRect) {
     super.init(frame: frame)
     
@@ -31,8 +38,11 @@ class PageCell: UICollectionViewCell {
   
   func setupViews() {
     addSubview(imageView)
+    addSubview(textView)
     
-    imageView.anchorToTop(topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor)
+    imageView.anchorToTop(topAnchor, left: leftAnchor, bottom: textView.topAnchor, right: rightAnchor)
+    textView.anchorToTop(nil, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor)
+    textView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.3).isActive = true
   }
   
 }
