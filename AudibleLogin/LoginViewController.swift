@@ -45,7 +45,7 @@ class LoginViewController: UIViewController {
     collectionView.register(PageCell.self, forCellWithReuseIdentifier: pageCellId)
     
     collectionView.anchorToTop(view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor)
-    collectionView.backgroundColor = .red
+    collectionView.backgroundColor = .white
   }
 }
 
