@@ -11,6 +11,12 @@ import UIKit
 class LoginViewController: UIViewController {
   
   let pageCellId = "pageId"
+  let pages: [Page] = {
+    let firstPage = Page(title: "Share a great listen", message: "It's free to send books to people in your life. Every receipient's first book is on us.", imageName: "page1")
+    let secondPage = Page(title: "Send from your library", message: "Tap the More menu next to any book. Choose \"Send this book.\"", imageName: "page2")
+    let thirdPage = Page(title: <#T##String#>, message: <#T##String#>, imageName: <#T##String#>)
+    return [firstPage]
+  }()
   
   // Must be lazy var instead of let in order to pass self into cv delegate
   lazy var collectionView: UICollectionView = {
@@ -47,7 +53,7 @@ extension LoginViewController: UICollectionViewDelegate, UICollectionViewDataSou
   
   // # of items
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return 4
+    return pages.count
   }
   
   // Create Cell
