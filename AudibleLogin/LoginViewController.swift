@@ -10,7 +10,7 @@ import UIKit
 
 class LoginViewController: UIViewController {
   
-  let cellId = "cellId"
+  let pageCellId = "pageId"
   
   // Must be lazy var instead of let in order to pass self into cv delegate
   lazy var collectionView: UICollectionView = {
@@ -36,7 +36,7 @@ class LoginViewController: UIViewController {
 
   func setupViews() {
     view.addSubview(collectionView)
-    collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellId)
+    collectionView.register(PageCell.self, forCellWithReuseIdentifier: pageCellId)
     
     collectionView.anchorToTop(view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor)
     collectionView.backgroundColor = .red
@@ -53,8 +53,8 @@ extension LoginViewController: UICollectionViewDelegate, UICollectionViewDataSou
   // Create Cell
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
-    cell.backgroundColor = .blue
+    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: pageCellId, for: indexPath)
+    
     return cell
   }
   

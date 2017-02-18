@@ -13,6 +13,7 @@
 		03A009C31E576E9200CB7F01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03A009C21E576E9200CB7F01 /* Assets.xcassets */; };
 		03A009C61E576E9200CB7F01 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03A009C41E576E9200CB7F01 /* LaunchScreen.storyboard */; };
 		03B426C81E58392400A70CB4 /* UIView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B426C71E58392400A70CB4 /* UIView+extension.swift */; };
+		03B426CA1E583D7C00A70CB4 /* PageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B426C91E583D7C00A70CB4 /* PageCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		03A009C51E576E9200CB7F01 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		03A009C71E576E9200CB7F01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		03B426C71E58392400A70CB4 /* UIView+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+extension.swift"; sourceTree = "<group>"; };
+		03B426C91E583D7C00A70CB4 /* PageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 			children = (
 				03A009BB1E576E9200CB7F01 /* AppDelegate.swift */,
 				03A009BD1E576E9200CB7F01 /* LoginViewController.swift */,
+				03B426C91E583D7C00A70CB4 /* PageCell.swift */,
 				03A009BF1E576E9200CB7F01 /* Main.storyboard */,
 				03A009C21E576E9200CB7F01 /* Assets.xcassets */,
 				03A009C41E576E9200CB7F01 /* LaunchScreen.storyboard */,
@@ -142,6 +145,7 @@
 			files = (
 				03B426C81E58392400A70CB4 /* UIView+extension.swift in Sources */,
 				03A009BE1E576E9200CB7F01 /* LoginViewController.swift in Sources */,
+				03B426CA1E583D7C00A70CB4 /* PageCell.swift in Sources */,
 				03A009BC1E576E9200CB7F01 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
