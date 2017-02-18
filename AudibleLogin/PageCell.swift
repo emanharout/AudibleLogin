@@ -10,6 +10,32 @@ import UIKit
 
 class PageCell: UICollectionViewCell {
   
+  var page: Page? {
+    didSet {
+      guard let page = page else { return }
+      imageView.image = UIImage(named: page.imageName)
+      
+      let attributes = [NSFontAttributeName: UIFont.systemFont(ofSize: 20, weight: UIFontWeightMedium),
+                        NSForegroundColorAttributeName: UIColor.init(white: 0.2, alpha: 1)]
+      let attributedText = NSMutableAttributedString(string: page.title, attributes: attributes)
+      
+      let messageTextAttributes = [NSFontAttributeName: UIFont.systemFont(ofSize: 14),
+                               NSForegroundColorAttributeName: UIColor.init(white: 0.2, alpha: 0.2)]
+      let messageAttributedText = NSMutableAttributedString(string: "\n\n\(page.message)", attributes: messageTextAttributes)
+      
+      attributedText.append(messageAttributedText)
+      
+      // Center Attributed Text
+      let paragraphStyle = NSMutableParagraphStyle()
+      paragraphStyle.alignment = .center
+      let length   = attributedText.string.characters.count
+      
+      attributedText.addAttribute(NSParagraphStyleAttributeName, value: paragraphStyle, range: NSRange(location: 0, length: length))
+      
+      textView.attributedText = attributedText
+    }
+  }
+  
   let imageView: UIImageView = {
     let iv = UIImageView()
     iv.image = UIImage(named: "page1")
