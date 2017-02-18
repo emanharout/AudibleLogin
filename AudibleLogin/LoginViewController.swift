@@ -14,8 +14,8 @@ class LoginViewController: UIViewController {
   let pages: [Page] = {
     let firstPage = Page(title: "Share a great listen", message: "It's free to send books to people in your life. Every receipient's first book is on us.", imageName: "page1")
     let secondPage = Page(title: "Send from your library", message: "Tap the More menu next to any book. Choose \"Send this book.\"", imageName: "page2")
-    let thirdPage = Page(title: <#T##String#>, message: <#T##String#>, imageName: <#T##String#>)
-    return [firstPage]
+    let thirdPage = Page(title: "Send from the player", message: "Tap the More menu in the upper corner. Choose \"Send this book.\"", imageName: "page3")
+    return [firstPage, secondPage, thirdPage]
   }()
   
   // Must be lazy var instead of let in order to pass self into cv delegate
@@ -59,7 +59,9 @@ extension LoginViewController: UICollectionViewDelegate, UICollectionViewDataSou
   // Create Cell
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: pageCellId, for: indexPath)
+    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: pageCellId, for: indexPath) as! PageCell
+    let page = pages[indexPath.item]
+    cell.page = page
     
     return cell
   }
