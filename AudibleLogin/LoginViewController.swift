@@ -18,6 +18,14 @@ class LoginViewController: UIViewController {
     return [firstPage, secondPage, thirdPage]
   }()
   
+  let pageControl: UIPageControl = {
+    let pc = UIPageControl()
+    pc.currentPageIndicatorTintColor = UIColor(red: 247/255, green: 154/255, blue: 27/255, alpha: 1)
+    pc.pageIndicatorTintColor = .lightGray
+    pc.numberOfPages = 3
+    return pc
+  }()
+  
   // Must be lazy var instead of let in order to pass self into cv delegate
   lazy var collectionView: UICollectionView = {
     let layout = UICollectionViewFlowLayout()
@@ -42,10 +50,15 @@ class LoginViewController: UIViewController {
 
   func setupViews() {
     view.addSubview(collectionView)
-    collectionView.register(PageCell.self, forCellWithReuseIdentifier: pageCellId)
+    view.addSubview(pageControl)
     
-    collectionView.anchorToTop(view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor)
+    collectionView.register(PageCell.self, forCellWithReuseIdentifier: pageCellId)
     collectionView.backgroundColor = .white
+    
+    // Layout
+    collectionView.anchorToTop(view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor)
+    
+    _ = pageControl.anchor(nil, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 40)
   }
 }
 
