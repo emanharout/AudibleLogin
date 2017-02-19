@@ -26,6 +26,20 @@ class LoginViewController: UIViewController {
     return pc
   }()
   
+  let skipButton: UIButton = {
+    let button = UIButton(type: .system)
+    button.setTitle("Skip", for: .normal)
+    button.setTitleColor(UIColor(red: 247/255, green: 154/255, blue: 27/255, alpha: 1), for: .normal)
+    return button
+  }()
+  
+  let nextButton: UIButton = {
+    let button = UIButton(type: .system)
+    button.setTitle("Next", for: .normal)
+    button.setTitleColor(UIColor(red: 247/255, green: 154/255, blue: 27/255, alpha: 1), for: .normal)
+    return button
+  }()
+  
   // Must be lazy var instead of let in order to pass self into cv delegate
   lazy var collectionView: UICollectionView = {
     let layout = UICollectionViewFlowLayout()
@@ -42,6 +56,7 @@ class LoginViewController: UIViewController {
     return cv
   }()
 
+  // MARK: Methods
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -51,6 +66,8 @@ class LoginViewController: UIViewController {
   func setupViews() {
     view.addSubview(collectionView)
     view.addSubview(pageControl)
+    view.addSubview(skipButton)
+    view.addSubview(nextButton)
     
     collectionView.register(PageCell.self, forCellWithReuseIdentifier: pageCellId)
     collectionView.backgroundColor = .white
@@ -59,6 +76,10 @@ class LoginViewController: UIViewController {
     collectionView.anchorToTop(view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor)
     
     _ = pageControl.anchor(nil, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 40)
+    
+    _ = skipButton.anchor(view.topAnchor, left: view.leftAnchor, bottom: nil, right: nil, topConstant: 16, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 60, heightConstant: 50)
+    
+    _ = nextButton.anchor(view.topAnchor, left: nil, bottom: nil, right: view.rightAnchor, topConstant: 16, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 60, heightConstant: 50)
   }
 }
 
