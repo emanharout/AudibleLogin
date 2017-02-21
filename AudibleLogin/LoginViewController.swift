@@ -20,6 +20,8 @@ class LoginViewController: UIViewController {
   }()
   
   var pageControlBottomAnchor: NSLayoutConstraint?
+  var skipButtonTopAnchor: NSLayoutConstraint?
+  var nextButtonTopAnchor: NSLayoutConstraint?
   
   lazy var pageControl: UIPageControl = {
     let pc = UIPageControl()
@@ -80,9 +82,9 @@ class LoginViewController: UIViewController {
     
     pageControlBottomAnchor = pageControl.anchor(nil, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 40)[1]
     
-    _ = skipButton.anchor(view.topAnchor, left: view.leftAnchor, bottom: nil, right: nil, topConstant: 16, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 60, heightConstant: 50)
+    skipButtonTopAnchor = skipButton.anchor(view.topAnchor, left: view.leftAnchor, bottom: nil, right: nil, topConstant: 16, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 60, heightConstant: 50).first
     
-    _ = nextButton.anchor(view.topAnchor, left: nil, bottom: nil, right: view.rightAnchor, topConstant: 16, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 60, heightConstant: 50)
+    nextButtonTopAnchor = nextButton.anchor(view.topAnchor, left: nil, bottom: nil, right: view.rightAnchor, topConstant: 16, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 60, heightConstant: 50).first
   }
   
   func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
@@ -95,15 +97,18 @@ class LoginViewController: UIViewController {
     // Hide UIPageControl upon viewing Login screen
     if pageNumber == pages.count {
       pageControlBottomAnchor?.constant = 40
-      UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: { 
-        self.view.layoutIfNeeded()
-      }, completion: nil)
+      skipButtonTopAnchor?.constant = -40
+      nextButtonTopAnchor?.constant = -40
     } else {
       pageControlBottomAnchor?.constant = 0
-      UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
-        self.view.layoutIfNeeded()
-      }, completion: nil)
+      skipButtonTopAnchor?.constant = 16
+      nextButtonTopAnchor?.constant = 16
     }
+    
+    UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+      self.view.layoutIfNeeded()
+    }, completion: nil)
+    
   }
 }
 
