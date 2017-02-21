@@ -19,6 +19,8 @@ class LoginViewController: UIViewController {
     return [firstPage, secondPage, thirdPage]
   }()
   
+  var pageControlBottomAnchor: NSLayoutConstraint?
+  
   lazy var pageControl: UIPageControl = {
     let pc = UIPageControl()
     pc.currentPageIndicatorTintColor = UIColor(red: 247/255, green: 154/255, blue: 27/255, alpha: 1)
@@ -76,7 +78,7 @@ class LoginViewController: UIViewController {
     // Layout
     collectionView.anchorToTop(view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor)
     
-    _ = pageControl.anchor(nil, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 40)
+    pageControlBottomAnchor = pageControl.anchor(nil, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 40)[1]
     
     _ = skipButton.anchor(view.topAnchor, left: view.leftAnchor, bottom: nil, right: nil, topConstant: 16, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 60, heightConstant: 50)
     
@@ -84,9 +86,24 @@ class LoginViewController: UIViewController {
   }
   
   func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+    
+    // Hookup UIPageControl to current page
     let pageNumber = Int(targetContentOffset.pointee.x / view.frame.width)
     print(pageNumber)
     pageControl.currentPage = pageNumber
+    
+    // Hide UIPageControl upon viewing Login screen
+    if pageNumber == pages.count {
+      pageControlBottomAnchor?.constant = 40
+      UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: { 
+        self.view.layoutIfNeeded()
+      }, completion: nil)
+    } else {
+      pageControlBottomAnchor?.constant = 0
+      UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
+        self.view.layoutIfNeeded()
+      }, completion: nil)
+    }
   }
 }
 
