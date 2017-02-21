@@ -143,7 +143,7 @@ extension LoginViewController: UICollectionViewDelegate, UICollectionViewDataSou
   // Register Cells
   fileprivate func registerCells() {
     collectionView.register(PageCell.self, forCellWithReuseIdentifier: pageCellId)
-    collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: loginCellId)
+    collectionView.register(LoginCell.self, forCellWithReuseIdentifier: loginCellId)
   }
   
 }

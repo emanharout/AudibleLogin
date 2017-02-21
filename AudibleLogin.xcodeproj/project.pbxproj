@@ -15,6 +15,7 @@
 		03B426C81E58392400A70CB4 /* UIView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B426C71E58392400A70CB4 /* UIView+extension.swift */; };
 		03B426CA1E583D7C00A70CB4 /* PageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B426C91E583D7C00A70CB4 /* PageCell.swift */; };
 		03B426CC1E58CE4800A70CB4 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B426CB1E58CE4800A70CB4 /* Model.swift */; };
+		03F4D96D1E5C523B0025921B /* LoginCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F4D96C1E5C523B0025921B /* LoginCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		03B426C71E58392400A70CB4 /* UIView+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+extension.swift"; sourceTree = "<group>"; };
 		03B426C91E583D7C00A70CB4 /* PageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageCell.swift; sourceTree = "<group>"; };
 		03B426CB1E58CE4800A70CB4 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		03F4D96C1E5C523B0025921B /* LoginCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 				03B426CD1E58CE5D00A70CB4 /* Supporting Files */,
 				03A009BD1E576E9200CB7F01 /* LoginViewController.swift */,
 				03B426C91E583D7C00A70CB4 /* PageCell.swift */,
+				03F4D96C1E5C523B0025921B /* LoginCell.swift */,
 				03B426CB1E58CE4800A70CB4 /* Model.swift */,
 				03A009C21E576E9200CB7F01 /* Assets.xcassets */,
 			);
@@ -159,6 +162,7 @@
 				03A009BE1E576E9200CB7F01 /* LoginViewController.swift in Sources */,
 				03B426CA1E583D7C00A70CB4 /* PageCell.swift in Sources */,
 				03A009BC1E576E9200CB7F01 /* AppDelegate.swift in Sources */,
+				03F4D96D1E5C523B0025921B /* LoginCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
