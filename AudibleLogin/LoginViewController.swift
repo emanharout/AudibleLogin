@@ -11,6 +11,7 @@ import UIKit
 class LoginViewController: UIViewController {
   
   let pageCellId = "pageId"
+  let loginCellId = "loginCellId"
   let pages: [Page] = {
     let firstPage = Page(title: "Share a great listen", message: "It's free to send books to people in your life. Every receipient's first book is on us.", imageName: "page1")
     let secondPage = Page(title: "Send from your library", message: "Tap the More menu next to any book. Choose \"Send this book.\"", imageName: "page2")
@@ -18,11 +19,11 @@ class LoginViewController: UIViewController {
     return [firstPage, secondPage, thirdPage]
   }()
   
-  let pageControl: UIPageControl = {
+  lazy var pageControl: UIPageControl = {
     let pc = UIPageControl()
     pc.currentPageIndicatorTintColor = UIColor(red: 247/255, green: 154/255, blue: 27/255, alpha: 1)
     pc.pageIndicatorTintColor = .lightGray
-    pc.numberOfPages = 3
+    pc.numberOfPages = self.pages.count + 1
     return pc
   }()
   
@@ -69,7 +70,7 @@ class LoginViewController: UIViewController {
     view.addSubview(skipButton)
     view.addSubview(nextButton)
     
-    collectionView.register(PageCell.self, forCellWithReuseIdentifier: pageCellId)
+    registerCells()
     collectionView.backgroundColor = .white
     
     // Layout
@@ -81,17 +82,29 @@ class LoginViewController: UIViewController {
     
     _ = nextButton.anchor(view.topAnchor, left: nil, bottom: nil, right: view.rightAnchor, topConstant: 16, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 60, heightConstant: 50)
   }
+  
+  func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+    let pageNumber = Int(targetContentOffset.pointee.x / view.frame.width)
+    print(pageNumber)
+    pageControl.currentPage = pageNumber
+  }
 }
 
 extension LoginViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
   
   // # of items
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return pages.count
+    // Add one for login screen
+    return pages.count + 1
   }
   
   // Create Cell
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    
+    if indexPath.item == pages.count {
+      let loginCell = collectionView.dequeueReusableCell(withReuseIdentifier: loginCellId, for: indexPath)
+      return loginCell
+    }
     
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: pageCellId, for: indexPath) as! PageCell
     let page = pages[indexPath.item]
@@ -103,6 +116,12 @@ extension LoginViewController: UICollectionViewDelegate, UICollectionViewDataSou
   // Cell Size
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     return CGSize(width: view.frame.width, height: view.frame.height)
+  }
+  
+  // Register Cells
+  fileprivate func registerCells() {
+    collectionView.register(PageCell.self, forCellWithReuseIdentifier: pageCellId)
+    collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: loginCellId)
   }
   
 }
