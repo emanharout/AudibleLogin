@@ -65,6 +65,7 @@ class LoginViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    observeKeyboardNotifications()
     setupViews()
   }
 
@@ -108,7 +109,28 @@ class LoginViewController: UIViewController {
     UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
       self.view.layoutIfNeeded()
     }, completion: nil)
-    
+  }
+  
+  func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    // Whenever we scroll again, editting ends (keyboard resigns from login vc)
+    view.endEditing(true)
+  }
+  
+  fileprivate func observeKeyboardNotifications() {
+    NotificationCenter.default.addObserver(self, selector: #selector(keyboardShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(keyboardHide), name: .UIKeyboardWillHide, object: nil)
+  }
+  
+  func keyboardShow() {
+    UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: { 
+      self.view.frame = CGRect(x: 0, y: -50, width: self.view.frame.width, height: self.view.frame.height)
+    }, completion: nil)
+  }
+  
+  func keyboardHide() {
+    UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+      self.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+    }, completion: nil)
   }
 }
 
