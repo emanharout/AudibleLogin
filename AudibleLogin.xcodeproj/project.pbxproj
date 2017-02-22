@@ -16,6 +16,7 @@
 		03B426CA1E583D7C00A70CB4 /* PageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B426C91E583D7C00A70CB4 /* PageCell.swift */; };
 		03B426CC1E58CE4800A70CB4 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B426CB1E58CE4800A70CB4 /* Model.swift */; };
 		03F4D96D1E5C523B0025921B /* LoginCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F4D96C1E5C523B0025921B /* LoginCell.swift */; };
+		03F4D96F1E5D53820025921B /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F4D96E1E5D53820025921B /* MainNavigationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		03B426C91E583D7C00A70CB4 /* PageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageCell.swift; sourceTree = "<group>"; };
 		03B426CB1E58CE4800A70CB4 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		03F4D96C1E5C523B0025921B /* LoginCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginCell.swift; sourceTree = "<group>"; };
+		03F4D96E1E5D53820025921B /* MainNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				03A009BB1E576E9200CB7F01 /* AppDelegate.swift */,
+				03F4D96E1E5D53820025921B /* MainNavigationController.swift */,
 				03A009BF1E576E9200CB7F01 /* Main.storyboard */,
 				03A009C41E576E9200CB7F01 /* LaunchScreen.storyboard */,
 				03A009C71E576E9200CB7F01 /* Info.plist */,
@@ -161,6 +164,7 @@
 				03B426C81E58392400A70CB4 /* UIView+extension.swift in Sources */,
 				03A009BE1E576E9200CB7F01 /* LoginViewController.swift in Sources */,
 				03B426CA1E583D7C00A70CB4 /* PageCell.swift in Sources */,
+				03F4D96F1E5D53820025921B /* MainNavigationController.swift in Sources */,
 				03A009BC1E576E9200CB7F01 /* AppDelegate.swift in Sources */,
 				03F4D96D1E5C523B0025921B /* LoginCell.swift in Sources */,
 			);
