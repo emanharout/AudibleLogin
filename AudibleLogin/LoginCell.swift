@@ -39,6 +39,7 @@ class LoginCell: UICollectionViewCell {
     button.backgroundColor = .orange
     button.setTitle("Log in", for: .normal)
     button.setTitleColor(.white, for: .normal)
+    button.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
     return button
   }()
   
@@ -48,8 +49,15 @@ class LoginCell: UICollectionViewCell {
     setupViews()
   }
   
+  
+  weak var delegate: LoginViewControllerDelegate?
+  
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
+  }
+  
+  func handleLogin() {
+    delegate?.finishLoggingIn()
   }
   
   func setupViews() {

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, LoginViewControllerDelegate {
   
   let pageCellId = "pageId"
   let loginCellId = "loginCellId"
@@ -178,6 +178,14 @@ class LoginViewController: UIViewController {
       self.collectionView.reloadData()
     }
   }
+  
+  func finishLoggingIn() {
+    //Key window returns actual window for your app
+    let rootViewController = UIApplication.shared.keyWindow?.rootViewController
+    guard let mainNavigationController = rootViewController as? MainNavigationController else {return}
+    mainNavigationController.viewControllers = [HomeController()]
+    dismiss(animated: true, completion: nil)
+  }
 }
 
 extension LoginViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -192,7 +200,8 @@ extension LoginViewController: UICollectionViewDelegate, UICollectionViewDataSou
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     
     if indexPath.item == pages.count {
-      let loginCell = collectionView.dequeueReusableCell(withReuseIdentifier: loginCellId, for: indexPath)
+      let loginCell = collectionView.dequeueReusableCell(withReuseIdentifier: loginCellId, for: indexPath) as! LoginCell
+      loginCell.delegate = self
       return loginCell
     }
     
@@ -214,4 +223,9 @@ extension LoginViewController: UICollectionViewDelegate, UICollectionViewDataSou
     collectionView.register(LoginCell.self, forCellWithReuseIdentifier: loginCellId)
   }
   
+}
+
+
+protocol LoginViewControllerDelegate: class {
+  func finishLoggingIn()
 }
