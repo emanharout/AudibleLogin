@@ -158,6 +158,23 @@ class LoginViewController: UIViewController {
     skipButtonTopAnchor?.constant = -40
     nextButtonTopAnchor?.constant = -40
   }
+  
+  // Fix Layout on Orientation Change
+  override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+    print(UIDevice.current.orientation.isLandscape)
+    
+    // Redraw collectionview with proper width/height for all cells
+    collectionView.collectionViewLayout.invalidateLayout()
+    
+    let indexPath = IndexPath(item: pageControl.currentPage, section: 0)
+    
+    // Scroll to indexPath after rotation is going
+    DispatchQueue.main.async {
+      self.collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+      // Update cell drawing when reassigning page, so landscape image will be updated in didSet
+      self.collectionView.reloadData()
+    }
+  }
 }
 
 extension LoginViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {

@@ -13,7 +13,13 @@ class PageCell: UICollectionViewCell {
   var page: Page? {
     didSet {
       guard let page = page else { return }
-      imageView.image = UIImage(named: page.imageName)
+      
+      var imageName = page.imageName
+      if UIDevice.current.orientation.isLandscape {
+        // Use landscape version of image instead
+        imageName += "_landscape"
+      }
+      imageView.image = UIImage(named: imageName)
       
       let attributes = [NSFontAttributeName: UIFont.systemFont(ofSize: 20, weight: UIFontWeightMedium),
                         NSForegroundColorAttributeName: UIColor(white: 0.2, alpha: 1)]
