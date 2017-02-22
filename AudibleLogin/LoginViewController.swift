@@ -35,6 +35,7 @@ class LoginViewController: UIViewController {
     let button = UIButton(type: .system)
     button.setTitle("Skip", for: .normal)
     button.setTitleColor(UIColor(red: 247/255, green: 154/255, blue: 27/255, alpha: 1), for: .normal)
+    button.addTarget(self, action: #selector(skip), for: .touchUpInside)
     return button
   }()
   
@@ -145,6 +146,11 @@ class LoginViewController: UIViewController {
     let indexPath = IndexPath(item: pageControl.currentPage + 1, section: 0)
     collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
     pageControl.currentPage += 1
+  }
+  
+  func skip() {
+    pageControl.currentPage = pages.count - 1
+    nextPage()
   }
   
   fileprivate func moveControlConstraintsOffScreen() {
