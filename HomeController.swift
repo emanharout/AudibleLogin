@@ -23,8 +23,7 @@ class HomeController: UIViewController {
   // MARK: Methods
   
   func handleSignOut() {
-    UserDefaults.standard.set(false, forKey: "isLoggedIn")
-    UserDefaults.standard.synchronize()
+    UserDefaults.standard.setIsLoggedIn(value: false)
     
     let loginController = LoginViewController()
     present(loginController, animated: true, completion: nil)

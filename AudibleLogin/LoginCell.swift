@@ -34,7 +34,8 @@ class LoginCell: UICollectionViewCell {
     return textField
   }()
   
-  let loginButton: UIButton = {
+  // Can't pass self when UIButton initialized via constant with closure, convert to lazy init
+  lazy var loginButton: UIButton = {
     let button = UIButton(type: .system)
     button.backgroundColor = .orange
     button.setTitle("Log in", for: .normal)
